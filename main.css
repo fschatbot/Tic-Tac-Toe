@@ -1,0 +1,76 @@
+@tailwind base;
+
+game-board,
+body {
+	@apply flex flex-col justify-center items-center relative;
+}
+
+body {
+	@apply min-h-screen;
+}
+
+h1 {
+	@apply text-5xl font-bold text-sky-800;
+}
+
+h3 {
+	@apply text-xl font-medium text-slate-500;
+}
+
+#winner {
+	@apply text-emerald-500;
+}
+
+#line {
+	--width: 18rem; /* 18rem if straight and 25rem if diagonal */
+	--degree: 90deg; /* 45 right diagonal, 135 left diagonal, 0 horigontal, 90 vertical */
+	--horizontal_block: 0; /* 0 for left block, 1 for center block, 2 for right block */
+	--vertical_block: 1; /* 0 for top block, 1 for center block, 2 for bottom block */
+
+	left: calc(var(--horizontal_block) * 8rem - 5rem);
+	width: var(--width);
+	transform: rotate(var(--degree));
+	top: calc(var(--vertical_block) * 8rem + 4rem);
+	@apply bg-emerald-500 h-1 rounded-md absolute z-50 hidden;
+}
+
+/* Game Board */
+table {
+	@apply table-auto relative;
+}
+
+td {
+	@apply h-32 w-32 bg-gray-100 border-slate-300 cursor-pointer
+	justify-center text-center
+	text-8xl;
+}
+
+td[played] {
+	@apply cursor-not-allowed;
+}
+
+td[played="X"] {
+	@apply text-blue-600;
+	text-shadow: 0 0 20px rgb(37 99 235);
+}
+
+td[played="O"] {
+	@apply text-red-500;
+	text-shadow: 0 0 20px rgb(239 68 68);
+}
+
+tr:not(:last-of-type) td {
+	@apply border-b-4;
+}
+
+td:not(:last-of-type) {
+	@apply border-r-4;
+}
+
+#reset {
+	@apply bg-blue-500 text-white py-2 px-4 rounded-md mt-2 transition-all w-32;
+}
+
+#reset[expand] {
+	@apply w-96;
+}
