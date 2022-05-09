@@ -14,7 +14,7 @@ h1 {
 }
 
 h3 {
-	@apply text-xl font-medium text-slate-500;
+	@apply text-xl font-medium text-slate-500 mb-4;
 }
 
 #winner {
